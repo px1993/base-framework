@@ -12,6 +12,6 @@ Macaw::get('/', function () {
     echo 'Hello world!';
 });
 
-Macaw::get('/goods', 'Goods\GoodsController@index');
+Macaw::get('/goods', '\App\Controllers\Goods\GoodsController@index');
 
 Macaw::dispatch();

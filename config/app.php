@@ -1,11 +1,12 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: panxin
- * Date: 2018/9/26 0026
- * Time: 17:07
+
+/*
+ * This file is part of PHP CS Fixer.
+ * This source file is subject to the MIT license that is bundled
+ * with this source code in the file LICENSE.
  */
+
 return [
-    'DEBUG' => true,
+    'DEBUG'    => true,
     'timeZone' => 'Asia/Shanghai',
 ];

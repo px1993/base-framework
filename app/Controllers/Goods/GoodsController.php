@@ -7,12 +7,14 @@
  */
 namespace App\Controllers\Goods;
 use App\Controllers\BaseController;
+use App\Models\Goods\GoodsModel;
 
 class GoodsController extends BaseController{
 
     public function index()
     {
-        echo 1;
+        $goodsModel = new GoodsModel();
+        print_r($goodsModel);
     }
 
     public function add()
