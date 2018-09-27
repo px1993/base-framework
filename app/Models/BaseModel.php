@@ -9,7 +9,7 @@ namespace App\Models;
 use Medoo\Medoo;
 
 class BaseModel{
-    private static $_db;
+    private static $_db = [];
 
     //sql设置
     public function __construct()
@@ -28,24 +28,45 @@ class BaseModel{
         self::$_db = $database;
     }
 
-    //单例获取数据库连接
-    public static function getInstance()
-    {
-        if(null == self::$_db){
-            self::$_db = new self();
-        }
-
-        return self::$_db;
-    }
+//    /**
+//     * 单例获取数据库连接
+//     * @param $args
+//     * @return BaseModel|array|Medoo
+//     */
+//    public static function getInstance(...$args)
+//    {
+//        $key   = md5(serialize($args));
+//        if(!self::$_db[$key]){
+//            self::$_db[$key] = new self(...$args);
+//        }
+//
+//        return self::$_db[$key];
+//    }
 
     /**
      * @param $table
+     * @param $join
      * @param $columns
      * @param $where
      * @return array|bool
      */
-    public static function select($table,$columns,$where)
+    public function select($table,$join,$columns,$where = false)
     {
-        return self::$_db->select($table,'',$columns,$where);
+        return self::$_db->select($table, $join, $columns, $where);
+    }
+
+
+    public function log()
+    {
+        return self::$_db->log();
+    }
+
+    /**
+     * 获取数据连接信息
+     * @return array
+     */
+    public function info()
+    {
+        return self::$_db->info();
     }
 }

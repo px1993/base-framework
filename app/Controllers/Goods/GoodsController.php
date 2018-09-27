@@ -14,7 +14,8 @@ class GoodsController extends BaseController{
     public function index()
     {
         $goodsModel = new GoodsModel();
-        print_r($goodsModel);
+        $goods      = $goodsModel->select('goods','*',1);
+        print_r($goods);
     }
 
     public function add()

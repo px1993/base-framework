@@ -12,7 +12,7 @@ define('CONFIG_PATH', ROOT_PATH . '/../config');
 define('ROUTES_PATH', ROOT_PATH . '/../routes');
 
 //引入全局变量
-$config = require __DIR__. '/../.env.php';
+$config = require __DIR__. '/../env.php';
 
 //引入自动加载文件
 require ROOT_PATH . '/../vendor/autoload.php';
