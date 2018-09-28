@@ -8,6 +8,7 @@
 
 define('ROOT_PATH', __DIR__);
 define('APP_PATH', ROOT_PATH . '/../app');
+define('VIEW_PATH',ROOT_PATH . '/../views');
 define('CONFIG_PATH', ROOT_PATH . '/../config');
 define('ROUTES_PATH', ROOT_PATH . '/../routes');
 

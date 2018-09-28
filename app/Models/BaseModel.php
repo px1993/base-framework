@@ -1,15 +1,18 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: panxin
- * Date: 2018/9/26 0026
- * Time: 17:18
+
+/*
+ * This file is part of PHP CS Fixer.
+ * This source file is subject to the MIT license that is bundled
+ * with this source code in the file LICENSE.
  */
+
 namespace App\Models;
+
 use Medoo\Medoo;
 
-class BaseModel{
-    private static $_db = [];
+class BaseModel
+{
+    public static $_model = null;
 
     //sql设置
     public function __construct()
@@ -25,48 +28,18 @@ class BaseModel{
             //其他设置
             'charset'       => $_ENV['charset'] ?? 'utf8',
         ]);
-        self::$_db = $database;
-    }
-
-//    /**
-//     * 单例获取数据库连接
-//     * @param $args
-//     * @return BaseModel|array|Medoo
-//     */
-//    public static function getInstance(...$args)
-//    {
-//        $key   = md5(serialize($args));
-//        if(!self::$_db[$key]){
-//            self::$_db[$key] = new self(...$args);
-//        }
-//
-//        return self::$_db[$key];
-//    }
-
-    /**
-     * @param $table
-     * @param $join
-     * @param $columns
-     * @param $where
-     * @return array|bool
-     */
-    public function select($table,$join,$columns,$where = false)
-    {
-        return self::$_db->select($table, $join, $columns, $where);
-    }
-
-
-    public function log()
-    {
-        return self::$_db->log();
+        static::$_model = $database;
     }
 
     /**
-     * 获取数据连接信息
-     * @return array
+     * 单例获取数据库连接.
+     * @return Medoo
      */
-    public function info()
+    public static function getInstance()
     {
-        return self::$_db->info();
+        if (null === static::$_model){
+            new static();
+        }
+        return static::$_model;
     }
 }
