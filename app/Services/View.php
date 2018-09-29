@@ -19,16 +19,17 @@ class View
 
     public function __construct()
     {
-        $loader      = new Twig_Loader_Filesystem(VIEW_PATH);
+        $loader      = new Twig_Loader_Filesystem(__DIR__.'/../../views');
         $twig        = new Twig_Environment($loader);
         self::$_view = $twig;
     }
 
     /**
      * @param $templateFile
+     * @param array $array
      * @throws Exception
      */
-    public static function display($templateFile)
+    public static function display($templateFile,$array = [])
     {
         if (!$templateFile){
             throw new Exception('缺少模板文件');
@@ -36,6 +37,6 @@ class View
         if (null == self::$_view){
             new static();
         }
-        echo self::$_view->render($templateFile);
+        echo self::$_view->render($templateFile,$array);
     }
 }

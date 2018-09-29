@@ -11,16 +11,15 @@ namespace App\Controllers\Goods;
 use App\Controllers\BaseController;
 use App\Models\Goods\GoodsModel;
 use App\Services\View;
-use Twig_Loader_Filesystem;
-use Twig_Environment;
 
 class GoodsController extends BaseController
 {
     public function index()
     {
-        $goodsModel = GoodsModel::getInstance();
-        $goods      = $goodsModel->select('goods', '*', 1);
-        View::display('/goods/index.html');
+        $goods = GoodsModel::all();
+
+//        $goods      = $goodsModel->select('goods', '*', 1);
+        View::display('/goods/index.html',['goods'=>$goods]);
     }
 
     public function add()

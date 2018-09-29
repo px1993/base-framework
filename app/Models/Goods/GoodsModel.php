@@ -6,12 +6,10 @@
  * Time: 18:02
  */
 namespace App\Models\Goods;
-use App\Models\BaseModel;
+use Illuminate\Database\Eloquent\Model;
 
-class GoodsModel extends BaseModel{
-    //初始化
-    public function __construct()
-    {
-        parent::__construct();
-    }
+class GoodsModel extends Model {
+
+    protected $table = 'goods';
+
 }

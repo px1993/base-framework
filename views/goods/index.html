@@ -1,3 +1,5 @@
-<html>
-sda
-</html>
+{% for good in goods %}
+    {{ good.goods_name }}
+{% else %}
+    No users have been found.
+{% endfor %}
