@@ -10,6 +10,7 @@ namespace App\Controllers\Goods;
 
 use App\Controllers\BaseController;
 use App\Models\Goods\GoodsModel;
+use App\Services\Cache;
 use App\Services\View;
 
 class GoodsController extends BaseController
@@ -17,9 +18,8 @@ class GoodsController extends BaseController
     public function index()
     {
         $goods = GoodsModel::all();
-
-//        $goods      = $goodsModel->select('goods', '*', 1);
-        View::display('/goods/index.html',['goods'=>$goods]);
+        Cache::lpush('goods',$goods);
+        View::display('/goods/index.html', ['goods'=>$goods]);
     }
 
     public function add()
